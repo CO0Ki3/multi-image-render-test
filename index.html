@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<head>
+  <script>
+    let cnt = 0;
+    let imgAmouts;
+
+    const counter = setInterval(() => {
+      console.log(`cnt = ${cnt}`);
+      console.log(`imgAmount = ${imgAmouts}`);
+      if (cnt === imgAmouts) {
+        console.log('load done');
+        clearInterval(counter);
+        alert('image rendered');
+      }
+    }, 100);
+
+    window.addEventListener('DOMContentLoaded', () => {
+      imgAmouts = document.getElementsByTagName('img').length;
+    });
+
+    function rendered(num) {
+      // render complete
+      console.log(`${num} is loaded`);
+      cnt++;
+    }
+
+    function startRender(num) {
+      // rendering start
+      requestAnimationFrame(() => rendered(num));
+    }
+
+    function loaded(num) {
+      requestAnimationFrame(() => startRender(num));
+    }
+  </script>
+</head>
+<body>
+  <img
+    src="https://github.com/CO0Ki3/cute_cat/blob/master/cute_cat_1.jpeg?raw=true"
+    style="width: 3024px; height: 4032px"
+    onload="loaded(1);"
+  />
+  <img
+    src="https://github.com/CO0Ki3/cute_cat/blob/master/cute_cat_10.jpeg?raw=true"
+    style="width: 3024px; height: 3024px"
+    onload="loaded(2);"
+  />
+  <img
+    src="https://github.com/CO0Ki3/cute_cat/blob/master/cute_cat_11.jpeg?raw=true"
+    style="width: 3024px; height: 3024px"
+    onload="loaded(3);"
+  />
+  <img
+    src="https://github.com/CO0Ki3/cute_cat/blob/master/cute_cat_12.jpeg?raw=true"
+    style="width: 3024px; height: 3024px"
+    onload="loaded(4);"
+  />
+  <img
+    src="https://github.com/CO0Ki3/cute_cat/blob/master/cute_cat_2.jpeg?raw=true"
+    style="width: 3024px; height: 4032px"
+    onload="loaded(5);"
+  />
+  <img
+    src="https://github.com/CO0Ki3/cute_cat/blob/master/cute_cat_4.jpeg?raw=true"
+    style="width: 3024px; height: 3024px"
+    onload="loaded(6);"
+  />
+</body>
